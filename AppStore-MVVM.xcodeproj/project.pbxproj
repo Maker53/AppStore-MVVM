@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		85EBF39E28CE4F9F0071E0E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EBF39D28CE4F9F0071E0E1 /* AppDelegate.swift */; };
-		85EBF3A228CE4F9F0071E0E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EBF3A128CE4F9F0071E0E1 /* ViewController.swift */; };
+		85EBF3A228CE4F9F0071E0E1 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EBF3A128CE4F9F0071E0E1 /* MainTabBarController.swift */; };
 		85EBF3A728CE4FA00071E0E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85EBF3A628CE4FA00071E0E1 /* Assets.xcassets */; };
 		85EBF3AA28CE4FA00071E0E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85EBF3A828CE4FA00071E0E1 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -16,7 +16,7 @@
 /* Begin PBXFileReference section */
 		85EBF39A28CE4F9F0071E0E1 /* AppStore-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AppStore-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		85EBF39D28CE4F9F0071E0E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		85EBF3A128CE4F9F0071E0E1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		85EBF3A128CE4F9F0071E0E1 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		85EBF3A628CE4FA00071E0E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85EBF3A928CE4FA00071E0E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		85EBF3AB28CE4FA00071E0E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,13 +52,53 @@
 		85EBF39C28CE4F9F0071E0E1 /* AppStore-MVVM */ = {
 			isa = PBXGroup;
 			children = (
-				85EBF39D28CE4F9F0071E0E1 /* AppDelegate.swift */,
-				85EBF3A128CE4F9F0071E0E1 /* ViewController.swift */,
-				85EBF3A628CE4FA00071E0E1 /* Assets.xcassets */,
-				85EBF3A828CE4FA00071E0E1 /* LaunchScreen.storyboard */,
-				85EBF3AB28CE4FA00071E0E1 /* Info.plist */,
+				85EBF3B328CE58340071E0E1 /* Application */,
+				85EBF3B128CE57F90071E0E1 /* View */,
+				85EBF3B428CE58460071E0E1 /* Supporting Files */,
 			);
 			path = "AppStore-MVVM";
+			sourceTree = "<group>";
+		};
+		85EBF3B128CE57F90071E0E1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				85EBF3B228CE580E0071E0E1 /* Search */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		85EBF3B228CE580E0071E0E1 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		85EBF3B328CE58340071E0E1 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				85EBF3B528CE58610071E0E1 /* Storyboards */,
+				85EBF39D28CE4F9F0071E0E1 /* AppDelegate.swift */,
+				85EBF3A128CE4F9F0071E0E1 /* MainTabBarController.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		85EBF3B428CE58460071E0E1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				85EBF3A628CE4FA00071E0E1 /* Assets.xcassets */,
+				85EBF3AB28CE4FA00071E0E1 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		85EBF3B528CE58610071E0E1 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				85EBF3A828CE4FA00071E0E1 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,7 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85EBF3A228CE4F9F0071E0E1 /* ViewController.swift in Sources */,
+				85EBF3A228CE4F9F0071E0E1 /* MainTabBarController.swift in Sources */,
 				85EBF39E28CE4F9F0071E0E1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,12 +308,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T94XUBZ99A;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "AppStore-MVVM/Info.plist";
+				INFOPLIST_FILE = "AppStore-MVVM/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -296,12 +335,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T94XUBZ99A;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "AppStore-MVVM/Info.plist";
+				INFOPLIST_FILE = "AppStore-MVVM/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
