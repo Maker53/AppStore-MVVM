@@ -24,9 +24,11 @@ class SearchCoordinator: Coordinator {
     
     lazy var searchViewController: SearchViewController = {
         let viewController = SearchViewController()
+        let searchViewModel = SearchViewModel()
         
-        viewController.view.backgroundColor = .systemGroupedBackground
+        viewController.collectionView.backgroundColor = .systemGroupedBackground
         viewController.title = flowTitle
+        viewController.searchViewModel = searchViewModel
         
         return viewController
     }()
