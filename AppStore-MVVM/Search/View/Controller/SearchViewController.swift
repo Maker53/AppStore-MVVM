@@ -11,7 +11,11 @@ class SearchViewController: UICollectionViewController, UICollectionViewDelegate
     
     // MARK: - Public Properties
     
-    var searchViewModel: ISearchViewModel!
+    var searchViewModel: ISearchViewModel! {
+        didSet {
+            searchViewModel.fetchApps()
+        }
+    }
     
     // MARK: - Initializers
     
@@ -51,7 +55,11 @@ extension SearchViewController {
 
 extension SearchViewController {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         .init(width: view.frame.width, height: 350)
     }
 }

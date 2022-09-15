@@ -7,5 +7,6 @@
 
 protocol ISearchViewModel {
     
+    func fetchApps()
     func numberOfItemsInSection() -> Int
 }
