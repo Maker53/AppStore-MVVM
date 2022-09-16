@@ -12,6 +12,7 @@ class SearchViewModel: ISearchViewModel {
     // MARK: - Private Properties
     
     private let requestManager: IRequestManager
+    private var searchResult = [ResultInfo]()
     
     // MARK: - Initializer
     
@@ -21,14 +22,19 @@ class SearchViewModel: ISearchViewModel {
     
     // MARK: - Public Methods
     
-    func fetchApps() {
+    func fetchApps(completion: @escaping() -> Void) {
         let searchRequest = SearchRequest.getSearchResult(keyword: "telegram")
         let searchConfig = RequestConfig(request: searchRequest, parser: SearchResultParser())
         
         requestManager.perform(searchConfig) { result in
             switch result {
             case .success(let data):
-                print(data)
+                self.searchResult = data.results
+                
+                DispatchQueue.main.async {
+                    completion()
+                }
+                
                 return
             case .failure(let error):
                 print(error)
@@ -38,6 +44,10 @@ class SearchViewModel: ISearchViewModel {
     }
     
     func numberOfItemsInSection() -> Int {
-        5
+        searchResult.count
+    }
+    
+    func getSearchResultCellViewModel(at indexPath: IndexPath) -> ISearchResultCellViewModel {
+        SearchResultCellViewModel(resultInfo: searchResult[indexPath.row])
     }
 }

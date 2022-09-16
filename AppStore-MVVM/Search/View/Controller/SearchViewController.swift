@@ -13,7 +13,11 @@ class SearchViewController: UICollectionViewController, UICollectionViewDelegate
     
     var searchViewModel: ISearchViewModel! {
         didSet {
-            searchViewModel.fetchApps()
+            searchViewModel.fetchApps() {
+                if self.collectionView.numberOfItems(inSection: 0) == 0 {
+                    self.collectionView.reloadData()
+                }
+            }
         }
     }
     
@@ -45,8 +49,16 @@ extension SearchViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCell.identifier, for: indexPath)
-                
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: SearchResultCell.identifier,
+            for: indexPath
+        ) as? SearchResultCell else {
+            return UICollectionViewCell()
+        }
+        
+        cell.viewModel = searchViewModel.getSearchResultCellViewModel(at: indexPath)
+        cell.configure()
+        
         return cell
     }
 }

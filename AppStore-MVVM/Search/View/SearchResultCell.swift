@@ -12,6 +12,7 @@ class SearchResultCell: UICollectionViewCell {
     // MARK: - Public Properties
     
     static let identifier = String(describing: SearchResultCell.self)
+    var viewModel: ISearchResultCellViewModel!
     
     // MARK: - Private UI Properties
     
@@ -107,7 +108,7 @@ class SearchResultCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .red
+        backgroundColor = .systemGroupedBackground
         
         addSubviews()
         setupConstraints()
@@ -115,6 +116,13 @@ class SearchResultCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Public Methods
+    
+    func configure() {
+        appNameLabel.text = viewModel.appName
+        appCategoryLabel.text = viewModel.appCategory
     }
 }
 
