@@ -30,11 +30,7 @@ class SearchViewModel: ISearchViewModel {
             switch result {
             case .success(let data):
                 self.searchResult = data.results
-                
-                DispatchQueue.main.async {
-                    completion()
-                }
-                
+                completion()
                 return
             case .failure(let error):
                 print(error)

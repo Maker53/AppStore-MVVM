@@ -26,16 +26,27 @@ final class RequestManager: IRequestManager {
             
             urlSession.dataTask(with: urlRequest) { data, _, error in
                 guard let data = data else {
-                    completion(.failure(.noData))
+                    
+                    DispatchQueue.main.async {
+                        completion(.failure(.noData))
+                    }
+                    
                     return
                 }
                 
                 guard let parseModel = config.parser.parse(data: data) else {
-                    completion(.failure(.parseError))
+                    
+                    DispatchQueue.main.async {
+                        completion(.failure(.parseError))
+                    }
+                    
                     return
                 }
                 
-                completion(.success(parseModel))
+                DispatchQueue.main.async {
+                    completion(.success(parseModel))
+                }
+                
             }.resume()
         } catch let error {
             completion(.failure(.invalidURL))

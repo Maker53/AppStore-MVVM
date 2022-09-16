@@ -9,21 +9,15 @@ import UIKit
 
 class SearchViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    // MARK: - Public Properties
+    // MARK: - Private Properties
     
-    var searchViewModel: ISearchViewModel! {
-        didSet {
-            searchViewModel.fetchApps() {
-                if self.collectionView.numberOfItems(inSection: 0) == 0 {
-                    self.collectionView.reloadData()
-                }
-            }
-        }
-    }
+    private let searchViewModel: ISearchViewModel!
     
     // MARK: - Initializers
     
-    init() {
+    init(viewModel: ISearchViewModel) {
+        self.searchViewModel = viewModel
+        
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
     
@@ -37,6 +31,16 @@ class SearchViewController: UICollectionViewController, UICollectionViewDelegate
         super.viewDidLoad()
         
         collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: SearchResultCell.identifier)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        searchViewModel.fetchApps() {
+            if self.collectionView.numberOfItems(inSection: 0) == 0 {
+                self.collectionView.reloadData()
+            }
+        }
     }
 }
 

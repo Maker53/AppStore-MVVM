@@ -14,6 +14,17 @@ struct SearchResult: Decodable {
 }
 
 struct ResultInfo: Decodable {
-    let trackName: String
-    let primaryGenreName: String
+    
+    let appName: String
+    let appCategory: String
+    let appImage: String
+    let screenshotUrls: [String]
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case appName = "trackName"
+        case appCategory = "primaryGenreName"
+        case appImage = "artworkUrl100"
+        case screenshotUrls
+    }
 }

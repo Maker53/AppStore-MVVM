@@ -10,11 +10,11 @@ class SearchResultCellViewModel: ISearchResultCellViewModel {
     // MARK: - Public Properties
     
     var appName: String {
-        resultInfo.trackName
+        resultInfo.appName
     }
     
     var appCategory: String {
-        resultInfo.primaryGenreName
+        resultInfo.appCategory
     }
     
     // MARK: - Private Properties
