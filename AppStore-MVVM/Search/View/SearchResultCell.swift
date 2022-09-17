@@ -121,6 +121,12 @@ class SearchResultCell: UICollectionViewCell {
     // MARK: - Public Methods
     
     func configure() {
+        viewModel.getAppImage { [weak self] image in
+            guard let self else { return }
+            
+            self.appImageView.image = image
+        }
+        
         appNameLabel.text = viewModel.appName
         appCategoryLabel.text = viewModel.appCategory
     }

@@ -9,6 +9,7 @@ import Foundation
 
 protocol IRequest {
     
+    var stringUrl: String { get }
     var path: String { get }
     var requestType: RequestType { get }
     var headers: [String: String] { get }
@@ -19,6 +20,14 @@ protocol IRequest {
 // MARK: - Default RequestProtocol
 
 extension IRequest {
+    
+    var stringUrl: String {
+        ""
+    }
+    
+    var path: String {
+        ""
+    }
     
     var host: String {
         APIConstants.host
@@ -37,16 +46,13 @@ extension IRequest {
     }
     
     func createURLRequest() throws -> URLRequest {
-        var components = URLComponents()
-        components.scheme = "https"
-        components.host = host
-        components.path = path
+        let url: URL
         
-        if !urlParams.isEmpty {
-            components.queryItems = urlParams.map { URLQueryItem(name: $0, value: $1) }
+        if !stringUrl.isEmpty {
+            url = try getUrlFromString()
+        } else {
+            url = try getUrlFromComponents()
         }
-        
-        guard let url = components.url else { throw NetworkError.invalidURL }
         
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = requestType.rawValue
@@ -62,5 +68,26 @@ extension IRequest {
         }
         
         return urlRequest
+    }
+    
+    private func getUrlFromComponents() throws -> URL {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = host
+        components.path = path
+        
+        if !urlParams.isEmpty {
+            components.queryItems = urlParams.map { URLQueryItem(name: $0, value: $1) }
+        }
+        
+        guard let url = components.url else { throw NetworkError.invalidURL }
+        
+        return url
+    }
+    
+    private func getUrlFromString() throws -> URL {
+        guard let url = URL(string: stringUrl) else { throw NetworkError.invalidURL }
+        
+        return url
     }
 }
