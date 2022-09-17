@@ -1,5 +1,5 @@
 //
-//  SearchResultImageParser.swift
+//  ImageParser.swift
 //  AppStore-MVVM
 //
 //  Created by Станислав on 17.09.2022.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchResultImageParser: IParser {
+class ImageParser: IParser {
     
     typealias Model = UIImage
         

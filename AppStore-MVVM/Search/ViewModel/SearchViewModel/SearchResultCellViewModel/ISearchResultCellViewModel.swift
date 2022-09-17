@@ -15,4 +15,5 @@ protocol ISearchResultCellViewModel {
     init(resultInfo: ResultInfo)
     
     func getAppImage(completion: @escaping (UIImage?) -> Void)
+    func getScreenshots(completion: @escaping (UIImage?, Int) -> Void)
 }

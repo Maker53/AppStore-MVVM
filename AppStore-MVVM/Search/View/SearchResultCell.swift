@@ -58,8 +58,9 @@ class SearchResultCell: UICollectionViewCell {
     private lazy var appImageView: UIImageView = {
         let imageView = UIImageView()
         
-        imageView.backgroundColor = .yellow
+        imageView.backgroundColor = .secondarySystemGroupedBackground
         imageView.layer.cornerRadius = 12
+        imageView.clipsToBounds = true
         
         return imageView
     }()
@@ -99,9 +100,13 @@ class SearchResultCell: UICollectionViewCell {
         return button
     }()
     
-    lazy var firstScreenshotImageView = createScreenshotImageView()
-    lazy var secondScreenshotImageView = createScreenshotImageView()
-    lazy var thirdScreenshotImageView = createScreenshotImageView()
+    lazy var screenshotImageViews: [UIImageView] = {
+        let firstScreenshotImageView = createScreenshotImageView()
+        let secondScreenshotImageView = createScreenshotImageView()
+        let thirdScreenshotImageView = createScreenshotImageView()
+        
+        return [firstScreenshotImageView, secondScreenshotImageView, thirdScreenshotImageView]
+    }()
     
     // MARK: - Initializers
     
@@ -121,10 +126,21 @@ class SearchResultCell: UICollectionViewCell {
     // MARK: - Public Methods
     
     func configure() {
+        appImageView.image = nil
+        screenshotImageViews.forEach {
+            $0.image = nil
+        }
+        
         viewModel.getAppImage { [weak self] image in
             guard let self else { return }
             
             self.appImageView.image = image
+        }
+        
+        viewModel.getScreenshots { [weak self] screenshot, counter in
+            guard let self else { return }
+            
+            self.screenshotImageViews[counter].image = screenshot
         }
         
         appNameLabel.text = viewModel.appName
@@ -139,7 +155,12 @@ extension SearchResultCell {
     private func createScreenshotImageView() -> UIImageView {
         let imageView = UIImageView()
         
-        imageView.backgroundColor = .blue
+        imageView.backgroundColor = .secondarySystemGroupedBackground
+        imageView.layer.cornerRadius = 8
+        imageView.layer.borderWidth = 0.5
+        imageView.layer.borderColor = UIColor.systemGray4.cgColor
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         
         return imageView
     }
@@ -151,7 +172,11 @@ extension SearchResultCell {
     private func setupConstraints() {
         labelsStackView.addArrangedSubviews(appNameLabel, appCategoryLabel, appRatingsLabel)
         appInfoStackView.addArrangedSubviews(appImageView, labelsStackView, getAppButton)
-        screenshotsStackView.addArrangedSubviews(firstScreenshotImageView, secondScreenshotImageView, thirdScreenshotImageView)
+        
+        screenshotImageViews.forEach {
+            screenshotsStackView.addArrangedSubview($0)
+        }
+        
         overallStackView.addArrangedSubviews(appInfoStackView, screenshotsStackView)
         
         NSLayoutConstraint.activate([

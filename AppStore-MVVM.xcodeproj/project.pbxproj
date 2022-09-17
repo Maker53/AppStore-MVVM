@@ -19,9 +19,10 @@
 		85416C1828D2DF4800F237D4 /* RequestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85416C1728D2DF4800F237D4 /* RequestConfig.swift */; };
 		8552B67528D42EFB00A0E57A /* ISearchResultCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8552B67428D42EFB00A0E57A /* ISearchResultCellViewModel.swift */; };
 		8552B67728D4302800A0E57A /* SearchResultCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8552B67628D4302800A0E57A /* SearchResultCellViewModel.swift */; };
-		857524A128D59652004CAF6B /* SearchResultImageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857524A028D59652004CAF6B /* SearchResultImageParser.swift */; };
-		857524A328D596C7004CAF6B /* SearchImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857524A228D596C7004CAF6B /* SearchImageRequest.swift */; };
+		857524A128D59652004CAF6B /* ImageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857524A028D59652004CAF6B /* ImageParser.swift */; };
+		857524A328D596C7004CAF6B /* ImageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857524A228D596C7004CAF6B /* ImageRequest.swift */; };
 		857524A628D5FF66004CAF6B /* ImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857524A528D5FF66004CAF6B /* ImageCacheService.swift */; };
+		857524A828D62A1A004CAF6B /* ConfigFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857524A728D62A1A004CAF6B /* ConfigFactory.swift */; };
 		85CB256B28CFA49E005519AB /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CB256A28CFA49E005519AB /* SearchResultCell.swift */; };
 		85CB256E28D042D3005519AB /* UIStackView+addArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CB256D28D042D3005519AB /* UIStackView+addArrangedSubviews.swift */; };
 		85EBF39E28CE4F9F0071E0E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EBF39D28CE4F9F0071E0E1 /* AppDelegate.swift */; };
@@ -51,9 +52,10 @@
 		85416C1728D2DF4800F237D4 /* RequestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestConfig.swift; sourceTree = "<group>"; };
 		8552B67428D42EFB00A0E57A /* ISearchResultCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISearchResultCellViewModel.swift; sourceTree = "<group>"; };
 		8552B67628D4302800A0E57A /* SearchResultCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCellViewModel.swift; sourceTree = "<group>"; };
-		857524A028D59652004CAF6B /* SearchResultImageParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultImageParser.swift; sourceTree = "<group>"; };
-		857524A228D596C7004CAF6B /* SearchImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchImageRequest.swift; sourceTree = "<group>"; };
+		857524A028D59652004CAF6B /* ImageParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageParser.swift; sourceTree = "<group>"; };
+		857524A228D596C7004CAF6B /* ImageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRequest.swift; sourceTree = "<group>"; };
 		857524A528D5FF66004CAF6B /* ImageCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheService.swift; sourceTree = "<group>"; };
+		857524A728D62A1A004CAF6B /* ConfigFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigFactory.swift; sourceTree = "<group>"; };
 		85CB256A28CFA49E005519AB /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		85CB256D28D042D3005519AB /* UIStackView+addArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+addArrangedSubviews.swift"; sourceTree = "<group>"; };
 		85EBF39A28CE4F9F0071E0E1 /* AppStore-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AppStore-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +102,7 @@
 				85416C0D28D1902300F237D4 /* Parser */,
 				85416C0328D18B9C00F237D4 /* Request */,
 				85416C0128D18AC400F237D4 /* APIConstants.swift */,
+				857524A728D62A1A004CAF6B /* ConfigFactory.swift */,
 			);
 			path = "Network Service";
 			sourceTree = "<group>";
@@ -138,7 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				85416C1128D2D40200F237D4 /* SearchRequest.swift */,
-				857524A228D596C7004CAF6B /* SearchImageRequest.swift */,
+				857524A228D596C7004CAF6B /* ImageRequest.swift */,
 			);
 			path = SearchRequest;
 			sourceTree = "<group>";
@@ -163,7 +166,7 @@
 		8575249F28D5962B004CAF6B /* SearchResultImageParser */ = {
 			isa = PBXGroup;
 			children = (
-				857524A028D59652004CAF6B /* SearchResultImageParser.swift */,
+				857524A028D59652004CAF6B /* ImageParser.swift */,
 			);
 			path = SearchResultImageParser;
 			sourceTree = "<group>";
@@ -409,7 +412,7 @@
 				857524A628D5FF66004CAF6B /* ImageCacheService.swift in Sources */,
 				85416C0C28D18E2600F237D4 /* RequestManager.swift in Sources */,
 				85EBF3BE28CEEE260071E0E1 /* ApplicationCoordinator.swift in Sources */,
-				857524A128D59652004CAF6B /* SearchResultImageParser.swift in Sources */,
+				857524A128D59652004CAF6B /* ImageParser.swift in Sources */,
 				85416C1428D2DA0F00F237D4 /* SearchResult.swift in Sources */,
 				85416C1228D2D40200F237D4 /* SearchRequest.swift in Sources */,
 				85416C0A28D18C8600F237D4 /* NetworkError.swift in Sources */,
@@ -422,13 +425,14 @@
 				85EBF3BC28CEEDE10071E0E1 /* Coordinator.swift in Sources */,
 				85416C0F28D1903400F237D4 /* IParser.swift in Sources */,
 				85EBF3B828CE596A0071E0E1 /* SearchViewController.swift in Sources */,
+				857524A828D62A1A004CAF6B /* ConfigFactory.swift in Sources */,
 				85EBF3CA28CEF10A0071E0E1 /* AppsCoordinator.swift in Sources */,
 				85EBF3D028CFA1C00071E0E1 /* SearchViewModel.swift in Sources */,
 				85CB256E28D042D3005519AB /* UIStackView+addArrangedSubviews.swift in Sources */,
 				85EBF39E28CE4F9F0071E0E1 /* AppDelegate.swift in Sources */,
 				85416C1828D2DF4800F237D4 /* RequestConfig.swift in Sources */,
 				85EBF3C828CEF0EA0071E0E1 /* TodayCoordinator.swift in Sources */,
-				857524A328D596C7004CAF6B /* SearchImageRequest.swift in Sources */,
+				857524A328D596C7004CAF6B /* ImageRequest.swift in Sources */,
 				85CB256B28CFA49E005519AB /* SearchResultCell.swift in Sources */,
 				8552B67528D42EFB00A0E57A /* ISearchResultCellViewModel.swift in Sources */,
 				85EBF3C628CEF07D0071E0E1 /* SearchCoordinator.swift in Sources */,

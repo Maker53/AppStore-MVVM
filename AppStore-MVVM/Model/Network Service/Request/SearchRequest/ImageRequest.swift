@@ -1,11 +1,11 @@
 //
-//  SearchImageRequest.swift
+//  ImageRequest.swift
 //  AppStore-MVVM
 //
 //  Created by Станислав on 17.09.2022.
 //
 
-enum SearchImageRequest: IRequest {
+enum ImageRequest: IRequest {
     
 case getImage(stringUrl: String)
     

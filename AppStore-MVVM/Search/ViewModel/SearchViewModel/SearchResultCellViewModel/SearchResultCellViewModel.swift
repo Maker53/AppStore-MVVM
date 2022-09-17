@@ -22,6 +22,7 @@ class SearchResultCellViewModel: ISearchResultCellViewModel {
     // MARK: - Private Properties
     
     private let resultInfo: ResultInfo
+    private let configFactory = ConfigFactory()
     private lazy var requestManager: IRequestManager = RequestManager()
     private lazy var cacheService: IImageCacheService = ImageCacheService.shared
     
@@ -34,10 +35,31 @@ class SearchResultCellViewModel: ISearchResultCellViewModel {
     // MARK: - Public Methods
     
     func getAppImage(completion: @escaping (UIImage?) -> Void) {
-        let request = SearchImageRequest.getImage(stringUrl: resultInfo.appImage)
-        let config = RequestConfig(request: request, parser: SearchResultImageParser())
+        fetchImage(fromStringUrl: resultInfo.appImage) { image in
+            completion(image)
+        }
+    }
+    
+    func getScreenshots(completion: @escaping (UIImage?, Int) -> Void) {
+        var counter = 0
         
-        if let image = cacheService.getImage(forKey: resultInfo.appImage) {
+        for screenshootUrl in resultInfo.screenshotUrls where counter < 3 {
+            fetchImage(fromStringUrl: screenshootUrl) { [counter] image in
+                completion(image, counter)
+            }
+            
+            counter += 1
+        }
+    }
+}
+
+// MARK: - Private Methods
+
+extension SearchResultCellViewModel {
+    private func fetchImage(fromStringUrl url: String, completion: @escaping (UIImage?) -> Void) {
+        let config = configFactory.imageConfig(stringURL: url)
+        
+        if let image = cacheService.getImage(forKey: url) {
             completion(image)
         } else {
             requestManager.perform(config) { [weak self] result in
@@ -46,7 +68,7 @@ class SearchResultCellViewModel: ISearchResultCellViewModel {
                 switch result {
                 case .success(let image):
                     completion(image)
-                    self.cacheService.insertImage(image, forKey: self.resultInfo.appImage)
+                    self.cacheService.insertImage(image, forKey: url)
                 case .failure(let error):
                     print(error)
                 }

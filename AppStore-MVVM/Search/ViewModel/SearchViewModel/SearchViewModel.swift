@@ -12,6 +12,7 @@ class SearchViewModel: ISearchViewModel {
     // MARK: - Private Properties
     
     private let requestManager: IRequestManager
+    private let configFactory = ConfigFactory()
     private var searchResult = [ResultInfo]()
     
     // MARK: - Initializer
@@ -23,8 +24,7 @@ class SearchViewModel: ISearchViewModel {
     // MARK: - Public Methods
     
     func fetchApps(completion: @escaping() -> Void) {
-        let searchRequest = SearchRequest.getSearchResult(keyword: "telegram")
-        let searchConfig = RequestConfig(request: searchRequest, parser: SearchResultParser())
+        let searchConfig = configFactory.searchConfig(keyword: "telegram")
         
         requestManager.perform(searchConfig) { result in
             switch result {
