@@ -131,15 +131,11 @@ class SearchResultCell: UICollectionViewCell {
             $0.image = nil
         }
         
-        viewModel.getAppImage { [weak self] image in
-            guard let self else { return }
-            
-            self.appImageView.image = image
+        viewModel.getAppImage { [unowned(unsafe) self] image in
+            appImageView.image = image
         }
         
-        viewModel.getScreenshots { [weak self] screenshot, counter in
-            guard let self else { return }
-            
+        viewModel.getScreenshots { [unowned(unsafe) self] screenshot, counter in
             self.screenshotImageViews[counter].image = screenshot
         }
         

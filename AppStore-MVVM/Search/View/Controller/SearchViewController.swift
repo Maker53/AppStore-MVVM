@@ -18,6 +18,7 @@ class SearchViewController: UIViewController {
     // MARK: - Private Properties
     
     private let searchViewModel: ISearchViewModel!
+    private var timer: Timer?
     
     // MARK: - Initializers
     
@@ -43,18 +44,19 @@ class SearchViewController: UIViewController {
         mainView?.collectionView.register(
             SearchResultCell.self,
             forCellWithReuseIdentifier: SearchResultCell.identifier)
+        
         mainView?.collectionView.delegate = self
         mainView?.collectionView.dataSource = self
+        navigationItem.searchController?.searchBar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        searchViewModel.fetchApps() {
+        searchViewModel.fetchApps(searchKeyword: "Telegram") {
             if self.mainView?.collectionView.numberOfItems(inSection: 0) == 0 {
                 self.mainView?.collectionView.reloadData()
-                self.mainView?.activityIndicator.stopAnimating()
-                self.mainView?.loadingLabel.isHidden = true
+                self.isShowLoading(false)
             }
         }
     }
@@ -63,11 +65,21 @@ class SearchViewController: UIViewController {
         super.viewDidAppear(animated)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             if self.mainView?.collectionView.numberOfItems(inSection: 0) == 0 {
-                self.mainView?.activityIndicator.startAnimating()
-                self.mainView?.loadingLabel.isHidden = false
+                self.isShowLoading(true)
             }
         }
+    }
+    
+    // MARK: - Private Methods
+    
+    private func isShowLoading(_ bool: Bool) {
+        if bool {
+            self.mainView?.activityIndicator.startAnimating()
+        } else {
+            self.mainView?.activityIndicator.stopAnimating()
+        }
         
+        self.mainView?.loadingLabel.isHidden = !bool
     }
 }
 
@@ -104,5 +116,23 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         .init(width: view.frame.width, height: 350)
+    }
+}
+
+// MARK: - UISearchBarDelegate
+
+extension SearchViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        timer?.invalidate()
+        
+        if !searchText.isEmpty {
+            timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+                self.searchViewModel.fetchApps(searchKeyword: searchText) {
+                    self.mainView?.collectionView.reloadData()
+                }
+            }
+        }
     }
 }

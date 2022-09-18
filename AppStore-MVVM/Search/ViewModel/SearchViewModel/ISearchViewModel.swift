@@ -9,7 +9,7 @@ import Foundation
 
 protocol ISearchViewModel {
     
-    func fetchApps(completion: @escaping() -> Void)
+    func fetchApps(searchKeyword keyword: String, completion: @escaping() -> Void)
     func numberOfItemsInSection() -> Int
     func getSearchResultCellViewModel(at indexPath: IndexPath) -> ISearchResultCellViewModel
 }

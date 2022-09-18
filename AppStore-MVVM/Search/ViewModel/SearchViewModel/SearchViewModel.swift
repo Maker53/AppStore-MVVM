@@ -23,8 +23,8 @@ class SearchViewModel: ISearchViewModel {
     
     // MARK: - Public Methods
     
-    func fetchApps(completion: @escaping() -> Void) {
-        let searchConfig = configFactory.searchConfig(keyword: "telegram")
+    func fetchApps(searchKeyword keyword: String, completion: @escaping() -> Void) {
+        let searchConfig = configFactory.searchConfig(keyword: keyword)
         
         requestManager.perform(searchConfig) { result in
             switch result {
