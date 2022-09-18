@@ -19,19 +19,27 @@ class SearchCoordinator: Coordinator {
         return navigationController
     }()
     
-    private let flowTitle = "Search"
-    private let tabBarImageName = "magnifyingglass"
-    
     lazy var searchViewController: SearchViewController = {
-        let viewController = SearchViewController()
         let searchViewModel = SearchViewModel()
+        let viewController = SearchViewController(viewModel: searchViewModel)
         
-        viewController.collectionView.backgroundColor = .systemGroupedBackground
+        viewController.navigationItem.searchController = searchController
+        viewController.mainView?.collectionView.backgroundColor = .systemGroupedBackground
         viewController.title = flowTitle
-        viewController.searchViewModel = searchViewModel
         
         return viewController
     }()
+    
+    lazy var searchController: UISearchController = {
+        let controller = UISearchController(searchResultsController: nil)
+        
+        controller.obscuresBackgroundDuringPresentation = false
+        
+        return controller
+    }()
+    
+    private let flowTitle = "Search"
+    private let tabBarImageName = "magnifyingglass"
     
     func start() {
         rootViewController.setViewControllers([searchViewController], animated: true)
