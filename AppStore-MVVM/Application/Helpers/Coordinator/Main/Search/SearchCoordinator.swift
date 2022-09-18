@@ -26,7 +26,7 @@ class SearchCoordinator: Coordinator {
         let searchViewModel = SearchViewModel()
         let viewController = SearchViewController(viewModel: searchViewModel)
         
-        viewController.collectionView.backgroundColor = .systemGroupedBackground
+        viewController.mainView?.collectionView.backgroundColor = .systemGroupedBackground
         viewController.title = flowTitle
         
         return viewController
