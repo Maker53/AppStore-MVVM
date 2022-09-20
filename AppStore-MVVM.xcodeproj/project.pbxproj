@@ -25,6 +25,16 @@
 		8551323F28D827440086AA76 /* AppsPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8551323E28D827440086AA76 /* AppsPageHeader.swift */; };
 		8551324228D8DB030086AA76 /* AppHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8551324128D8DB030086AA76 /* AppHeaderCell.swift */; };
 		8551324428D8E7340086AA76 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8551324328D8E7340086AA76 /* Constants.swift */; };
+		8551324828D96D510086AA76 /* IAppsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8551324728D96D510086AA76 /* IAppsViewModel.swift */; };
+		8551324A28D96DE00086AA76 /* AppsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8551324928D96DE00086AA76 /* AppsViewModel.swift */; };
+		8551324D28D96F5C0086AA76 /* IAppsPageHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8551324C28D96F5C0086AA76 /* IAppsPageHeaderViewModel.swift */; };
+		8551324F28D96F980086AA76 /* AppsPageHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8551324E28D96F980086AA76 /* AppsPageHeaderViewModel.swift */; };
+		8551325228D9719E0086AA76 /* IAppHeaderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8551325128D9719E0086AA76 /* IAppHeaderCellViewModel.swift */; };
+		8551325428D971C20086AA76 /* AppHeaderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8551325328D971C20086AA76 /* AppHeaderCellViewModel.swift */; };
+		8551325728D972C80086AA76 /* IAppsGroupCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8551325628D972C80086AA76 /* IAppsGroupCellViewModel.swift */; };
+		8551325928D973030086AA76 /* AppsGroupCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8551325828D973030086AA76 /* AppsGroupCellViewModel.swift */; };
+		8551325C28D974120086AA76 /* IAppRowCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8551325B28D974120086AA76 /* IAppRowCellViewModel.swift */; };
+		8551325E28D9742B0086AA76 /* AppRowCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8551325D28D9742B0086AA76 /* AppRowCellViewModel.swift */; };
 		8552B67528D42EFB00A0E57A /* ISearchResultCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8552B67428D42EFB00A0E57A /* ISearchResultCellViewModel.swift */; };
 		8552B67728D4302800A0E57A /* SearchResultCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8552B67628D4302800A0E57A /* SearchResultCellViewModel.swift */; };
 		857524A128D59652004CAF6B /* ImageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857524A028D59652004CAF6B /* ImageParser.swift */; };
@@ -66,6 +76,16 @@
 		8551323E28D827440086AA76 /* AppsPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPageHeader.swift; sourceTree = "<group>"; };
 		8551324128D8DB030086AA76 /* AppHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeaderCell.swift; sourceTree = "<group>"; };
 		8551324328D8E7340086AA76 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8551324728D96D510086AA76 /* IAppsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAppsViewModel.swift; sourceTree = "<group>"; };
+		8551324928D96DE00086AA76 /* AppsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsViewModel.swift; sourceTree = "<group>"; };
+		8551324C28D96F5C0086AA76 /* IAppsPageHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAppsPageHeaderViewModel.swift; sourceTree = "<group>"; };
+		8551324E28D96F980086AA76 /* AppsPageHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPageHeaderViewModel.swift; sourceTree = "<group>"; };
+		8551325128D9719E0086AA76 /* IAppHeaderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAppHeaderCellViewModel.swift; sourceTree = "<group>"; };
+		8551325328D971C20086AA76 /* AppHeaderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeaderCellViewModel.swift; sourceTree = "<group>"; };
+		8551325628D972C80086AA76 /* IAppsGroupCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAppsGroupCellViewModel.swift; sourceTree = "<group>"; };
+		8551325828D973030086AA76 /* AppsGroupCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupCellViewModel.swift; sourceTree = "<group>"; };
+		8551325B28D974120086AA76 /* IAppRowCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAppRowCellViewModel.swift; sourceTree = "<group>"; };
+		8551325D28D9742B0086AA76 /* AppRowCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRowCellViewModel.swift; sourceTree = "<group>"; };
 		8552B67428D42EFB00A0E57A /* ISearchResultCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISearchResultCellViewModel.swift; sourceTree = "<group>"; };
 		8552B67628D4302800A0E57A /* SearchResultCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCellViewModel.swift; sourceTree = "<group>"; };
 		857524A028D59652004CAF6B /* ImageParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageParser.swift; sourceTree = "<group>"; };
@@ -173,6 +193,7 @@
 		8551323228D77A320086AA76 /* Apps */ = {
 			isa = PBXGroup;
 			children = (
+				8551324528D96D280086AA76 /* ViewModel */,
 				8551323328D77A480086AA76 /* View */,
 			);
 			path = Apps;
@@ -204,6 +225,63 @@
 				8551324128D8DB030086AA76 /* AppHeaderCell.swift */,
 			);
 			path = AppsPageHeader;
+			sourceTree = "<group>";
+		};
+		8551324528D96D280086AA76 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8551324628D96D370086AA76 /* AppsViewModel */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8551324628D96D370086AA76 /* AppsViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8551325528D972AA0086AA76 /* AppsGroupCellViewModel */,
+				8551324B28D96EFB0086AA76 /* AppsPageHeaderViewModel */,
+				8551324728D96D510086AA76 /* IAppsViewModel.swift */,
+				8551324928D96DE00086AA76 /* AppsViewModel.swift */,
+			);
+			path = AppsViewModel;
+			sourceTree = "<group>";
+		};
+		8551324B28D96EFB0086AA76 /* AppsPageHeaderViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8551325028D9718E0086AA76 /* AppHeaderCellViewModel */,
+				8551324C28D96F5C0086AA76 /* IAppsPageHeaderViewModel.swift */,
+				8551324E28D96F980086AA76 /* AppsPageHeaderViewModel.swift */,
+			);
+			path = AppsPageHeaderViewModel;
+			sourceTree = "<group>";
+		};
+		8551325028D9718E0086AA76 /* AppHeaderCellViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8551325128D9719E0086AA76 /* IAppHeaderCellViewModel.swift */,
+				8551325328D971C20086AA76 /* AppHeaderCellViewModel.swift */,
+			);
+			path = AppHeaderCellViewModel;
+			sourceTree = "<group>";
+		};
+		8551325528D972AA0086AA76 /* AppsGroupCellViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8551325A28D974060086AA76 /* AppRowCellViewModel */,
+				8551325628D972C80086AA76 /* IAppsGroupCellViewModel.swift */,
+				8551325828D973030086AA76 /* AppsGroupCellViewModel.swift */,
+			);
+			path = AppsGroupCellViewModel;
+			sourceTree = "<group>";
+		};
+		8551325A28D974060086AA76 /* AppRowCellViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8551325B28D974120086AA76 /* IAppRowCellViewModel.swift */,
+				8551325D28D9742B0086AA76 /* AppRowCellViewModel.swift */,
+			);
+			path = AppRowCellViewModel;
 			sourceTree = "<group>";
 		};
 		8552B67328D42ED200A0E57A /* SearchResultCellViewModel */ = {
@@ -458,14 +536,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				8551324228D8DB030086AA76 /* AppHeaderCell.swift in Sources */,
+				8551325E28D9742B0086AA76 /* AppRowCellViewModel.swift in Sources */,
 				857524A628D5FF66004CAF6B /* ImageCacheService.swift in Sources */,
+				8551324D28D96F5C0086AA76 /* IAppsPageHeaderViewModel.swift in Sources */,
 				85416C0C28D18E2600F237D4 /* RequestManager.swift in Sources */,
 				8551323B28D786C20086AA76 /* AppRowCell.swift in Sources */,
+				8551325428D971C20086AA76 /* AppHeaderCellViewModel.swift in Sources */,
 				85EBF3BE28CEEE260071E0E1 /* ApplicationCoordinator.swift in Sources */,
 				8551323828D77DA10086AA76 /* AppsGroupCell.swift in Sources */,
+				8551325928D973030086AA76 /* AppsGroupCellViewModel.swift in Sources */,
 				8551323128D6FC930086AA76 /* SearchView.swift in Sources */,
 				857524A128D59652004CAF6B /* ImageParser.swift in Sources */,
 				85416C1428D2DA0F00F237D4 /* SearchResult.swift in Sources */,
+				8551325228D9719E0086AA76 /* IAppHeaderCellViewModel.swift in Sources */,
 				85416C1228D2D40200F237D4 /* SearchRequest.swift in Sources */,
 				85416C0A28D18C8600F237D4 /* NetworkError.swift in Sources */,
 				85416C1628D2DE5700F237D4 /* SearchResultParser.swift in Sources */,
@@ -484,14 +567,19 @@
 				85EBF39E28CE4F9F0071E0E1 /* AppDelegate.swift in Sources */,
 				85416C1828D2DF4800F237D4 /* RequestConfig.swift in Sources */,
 				85EBF3C828CEF0EA0071E0E1 /* TodayCoordinator.swift in Sources */,
+				8551325C28D974120086AA76 /* IAppRowCellViewModel.swift in Sources */,
 				857524A328D596C7004CAF6B /* ImageRequest.swift in Sources */,
+				8551325728D972C80086AA76 /* IAppsGroupCellViewModel.swift in Sources */,
+				8551324828D96D510086AA76 /* IAppsViewModel.swift in Sources */,
 				8551323F28D827440086AA76 /* AppsPageHeader.swift in Sources */,
 				85CB256B28CFA49E005519AB /* SearchResultCell.swift in Sources */,
 				8551323628D77A5E0086AA76 /* AppsViewController.swift in Sources */,
+				8551324F28D96F980086AA76 /* AppsPageHeaderViewModel.swift in Sources */,
 				8552B67528D42EFB00A0E57A /* ISearchResultCellViewModel.swift in Sources */,
 				85EBF3C628CEF07D0071E0E1 /* SearchCoordinator.swift in Sources */,
 				8551323D28D81D230086AA76 /* UIButton+createGetButton.swift in Sources */,
 				85416C0728D18C0100F237D4 /* RequestType.swift in Sources */,
+				8551324A28D96DE00086AA76 /* AppsViewModel.swift in Sources */,
 				8551324428D8E7340086AA76 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

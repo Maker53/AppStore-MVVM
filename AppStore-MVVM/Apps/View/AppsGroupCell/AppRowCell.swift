@@ -12,6 +12,7 @@ class AppRowCell: UICollectionViewCell {
     // MARK: - Public Properties
     
     static let identifier = String(describing: AppRowCell.self)
+    var viewModel: IAppRowCellViewModel!
     
     // MARK: - Private UI Properties
     

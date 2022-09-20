@@ -12,6 +12,7 @@ class AppsGroupCell: UICollectionViewCell {
     // MARK: - Public Properties
     
     static let identifier = String(describing: AppsGroupCell.self)
+    var viewModel: IAppsGroupCellViewModel!
     
     // MARK: - Private UI Properties
     
@@ -85,7 +86,7 @@ extension AppsGroupCell {
 extension AppsGroupCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        viewModel.numberOfItemsInSection()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -95,6 +96,9 @@ extension AppsGroupCell: UICollectionViewDataSource {
         ) as? AppRowCell else {
             return UICollectionViewCell()
         }
+        
+        let viewModel = viewModel.getAppRowCellViewModel(at: indexPath)
+        cell.viewModel = viewModel
         
         return cell
     }

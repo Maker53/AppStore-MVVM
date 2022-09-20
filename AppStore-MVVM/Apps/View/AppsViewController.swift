@@ -9,9 +9,15 @@ import UIKit
 
 class AppsViewController: UICollectionViewController {
     
+    // MARK: - Private Properties
+    
+    private let appsViewModel: IAppsViewModel
+    
     // MARK: - Initializers
     
-    init() {
+    init(viewModel: IAppsViewModel) {
+        self.appsViewModel = viewModel
+        
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
     
@@ -37,7 +43,7 @@ class AppsViewController: UICollectionViewController {
 extension AppsViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        appsViewModel.numberOfItemsInSection()
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -48,11 +54,17 @@ extension AppsViewController {
             return UICollectionViewCell()
         }
         
+        let viewModel = appsViewModel.getAppsGroupCellViewModel(at: indexPath)
+        cell.viewModel = viewModel
+        
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AppsPageHeader.identifier, for: indexPath) as? AppsPageHeader else { return UICollectionReusableView() }
+        
+        let viewModel = appsViewModel.getAppsPageHeaderViewModel(at: indexPath)
+        header.viewModel = viewModel
         
         return header
     }

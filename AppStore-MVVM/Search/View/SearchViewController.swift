@@ -17,7 +17,7 @@ class SearchViewController: UIViewController {
     
     // MARK: - Private Properties
     
-    private let searchViewModel: ISearchViewModel!
+    private let searchViewModel: ISearchViewModel
     private var timer: Timer?
     
     // MARK: - Initializers

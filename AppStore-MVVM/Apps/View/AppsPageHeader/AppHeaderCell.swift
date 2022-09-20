@@ -12,6 +12,7 @@ class AppHeaderCell: UICollectionViewCell {
     // MARK: - Public Properties
     
     static let identifier = String(describing: AppHeaderCell.self)
+    var viewModel: IAppHeaderCellViewModel!
     
     // MARK: - Private UI Properties
     

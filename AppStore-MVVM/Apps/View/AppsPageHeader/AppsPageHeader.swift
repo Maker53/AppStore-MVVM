@@ -12,6 +12,7 @@ class AppsPageHeader: UICollectionReusableView {
     // MARK: - Public Properties
     
     static let identifier = String(describing: AppsPageHeader.self)
+    var viewModel: IAppsPageHeaderViewModel!
     
     // MARK: - Private UI Properties
     
@@ -68,7 +69,7 @@ extension AppsPageHeader {
 extension AppsPageHeader: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+        viewModel.numberOfItemsInSection()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -78,6 +79,9 @@ extension AppsPageHeader: UICollectionViewDataSource {
         ) as? AppHeaderCell else {
             return UICollectionViewCell()
         }
+        
+        let viewModel = viewModel.getAppHeaderCellViewModel(at: indexPath)
+        cell.viewModel = viewModel
         
         return cell
     }
