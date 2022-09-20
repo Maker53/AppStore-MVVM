@@ -1,29 +1,19 @@
 //
-//  AppsGroupCell.swift
+//  AppsPageHeader.swift
 //  AppStore-MVVM
 //
-//  Created by Станислав on 18.09.2022.
+//  Created by Станислав on 19.09.2022.
 //
 
 import UIKit
 
-class AppsGroupCell: UICollectionViewCell {
+class AppsPageHeader: UICollectionReusableView {
     
     // MARK: - Public Properties
     
-    static let identifier = String(describing: AppsGroupCell.self)
+    static let identifier = String(describing: AppsPageHeader.self)
     
     // MARK: - Private UI Properties
-    
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        
-        label.text = "App Section"
-        label.font = .boldSystemFont(ofSize: 30)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -31,7 +21,7 @@ class AppsGroupCell: UICollectionViewCell {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
-        collectionView.register(AppRowCell.self, forCellWithReuseIdentifier: AppRowCell.identifier)
+        collectionView.register(AppHeaderCell.self, forCellWithReuseIdentifier: AppHeaderCell.identifier)
         collectionView.backgroundColor = .systemGroupedBackground
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -43,13 +33,11 @@ class AppsGroupCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .systemGroupedBackground
-        
         addSubviews()
         setupConstraints()
         
-        collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -59,21 +47,16 @@ class AppsGroupCell: UICollectionViewCell {
 
 // MARK: - Private Methods
 
-extension AppsGroupCell {
+extension AppsPageHeader {
     
     private func addSubviews() {
-        addSubview(titleLabel)
         addSubview(collectionView)
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.horizontalPadding),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.horizontalPadding),
-            
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            collectionView.topAnchor.constraint(equalTo: topAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
@@ -82,17 +65,17 @@ extension AppsGroupCell {
 
 // MARK: - UICollectionViewDataSource
 
-extension AppsGroupCell: UICollectionViewDataSource {
+extension AppsPageHeader: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: AppRowCell.identifier,
+            withReuseIdentifier: AppHeaderCell.identifier,
             for: indexPath
-        ) as? AppRowCell else {
+        ) as? AppHeaderCell else {
             return UICollectionViewCell()
         }
         
@@ -102,23 +85,13 @@ extension AppsGroupCell: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension AppsGroupCell: UICollectionViewDelegateFlowLayout {
+extension AppsPageHeader: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellHeight = (collectionView.frame.height - 2 * Constants.verticalPadding - 2 * Constants.lineSpasing) / 3
-        
-        return CGSize(width: frame.width - 3 * Constants.horizontalPadding, height: cellHeight)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        Constants.verticalPadding
+        .init(width: frame.width - 3 * Constants.horizontalPadding, height: frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        .init(
-            top: Constants.verticalPadding,
-            left: Constants.horizontalPadding,
-            bottom: Constants.verticalPadding,
-            right: Constants.horizontalPadding)
+        .init(top: 0, left: Constants.horizontalPadding, bottom: 0, right: 0)
     }
 }

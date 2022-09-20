@@ -25,7 +25,7 @@ class AppsCoordinator: Coordinator {
     private lazy var appsViewController: AppsViewController = {
         let viewController = AppsViewController()
         
-        viewController.view.backgroundColor = .systemGroupedBackground
+        viewController.collectionView.backgroundColor = .systemGroupedBackground
         viewController.title = flowTitle
         
         return viewController
