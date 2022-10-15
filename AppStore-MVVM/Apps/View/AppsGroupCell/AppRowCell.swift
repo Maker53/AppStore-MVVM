@@ -37,7 +37,7 @@ class AppRowCell: UICollectionViewCell {
     private lazy var appImageView: UIImageView = {
         let imageView = UIImageView()
         
-        imageView.layer.cornerRadius = 8
+        imageView.layer.cornerRadius = 12
         imageView.backgroundColor = .secondarySystemGroupedBackground
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
@@ -81,6 +81,19 @@ class AppRowCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Public Methods
+    
+    func configure() {
+        appImageView.image = nil
+        
+        viewModel.getAppImage { [unowned(unsafe) self] image in
+            appImageView.image = image
+        }
+        
+        appNameLabel.text = viewModel.appName
+        companyNameLabel.text = viewModel.companyName
     }
 }
 

@@ -9,13 +9,31 @@ import Foundation
 
 class AppsGroupCellViewModel: IAppsGroupCellViewModel {
     
+    // MARK: - Public Properties
+    
+    var title: String {
+        appGroup.feed.title
+    }
+    
+    // MARK: - Private Properties
+    
+    private let requestManager: IRequestManager = RequestManager()
+    private let configFactory = ConfigFactory()
+    private var appGroup: AppGroup
+    
+    // MARK: - Initializer
+    
+    required init(appGroup: AppGroup) {
+        self.appGroup = appGroup
+    }
+    
     // MARK: - Public Methods
     
     func numberOfItemsInSection() -> Int {
-        10
+        appGroup.feed.results.count
     }
     
     func getAppRowCellViewModel(at indexPath: IndexPath) -> IAppRowCellViewModel {
-        AppRowCellViewModel()
+        AppRowCellViewModel(feedResult: appGroup.feed.results[indexPath.row])
     }
 }

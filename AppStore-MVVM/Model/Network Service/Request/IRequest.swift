@@ -11,6 +11,7 @@ protocol IRequest {
     
     var stringUrl: String { get }
     var path: String { get }
+    var host: String { get }
     var requestType: RequestType { get }
     var headers: [String: String] { get }
     var params: [String: Any] { get }
@@ -30,7 +31,7 @@ extension IRequest {
     }
     
     var host: String {
-        APIConstants.host
+        ""
     }
     
     var params: [String: Any] {

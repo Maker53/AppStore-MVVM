@@ -9,6 +9,10 @@ import Foundation
 
 protocol IAppsGroupCellViewModel {
     
+    var title: String { get }
+    
+    init(appGroup: AppGroup)
+    
     func numberOfItemsInSection() -> Int
     func getAppRowCellViewModel(at indexPath: IndexPath) -> IAppRowCellViewModel
 }

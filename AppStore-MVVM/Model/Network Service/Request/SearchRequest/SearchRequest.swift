@@ -9,6 +9,10 @@ enum SearchRequest: IRequest {
     
     case getSearchResult(keyword: String)
     
+    var host: String {
+        APIConstants.iTunesHost
+    }
+    
     var path: String {
         "/search"
     }

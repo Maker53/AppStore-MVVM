@@ -9,6 +9,7 @@ import Foundation
 
 protocol IAppsViewModel {
     
+    func fetchPageData(completion: @escaping () -> Void)
     func numberOfItemsInSection() -> Int
     func getAppsPageHeaderViewModel(at indexPath: IndexPath) -> IAppsPageHeaderViewModel
     func getAppsGroupCellViewModel(at indexPath: IndexPath) -> IAppsGroupCellViewModel

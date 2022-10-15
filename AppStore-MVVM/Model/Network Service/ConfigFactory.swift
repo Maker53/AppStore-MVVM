@@ -14,4 +14,12 @@ struct ConfigFactory {
     func imageConfig(stringURL: String) -> RequestConfig<ImageParser> {
         .init(request: ImageRequest.getImage(stringUrl: stringURL), parser: ImageParser())
     }
+    
+    func top25FreeAppsConfig() -> RequestConfig<AppsParser> {
+        .init(request: AppsRequest.getTop25FreeApps, parser: AppsParser())
+    }
+    
+    func top25PaidAppsConfig() -> RequestConfig<AppsParser> {
+        .init(request: AppsRequest.getTop25PaidApps, parser: AppsParser())
+    }
 }

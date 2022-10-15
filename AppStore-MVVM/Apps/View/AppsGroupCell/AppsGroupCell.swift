@@ -19,8 +19,7 @@ class AppsGroupCell: UICollectionViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         
-        label.text = "App Section"
-        label.font = .boldSystemFont(ofSize: 30)
+        label.font = .boldSystemFont(ofSize: 24)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -55,6 +54,12 @@ class AppsGroupCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Public Properties
+    
+    func configure() {
+        titleLabel.text = viewModel.title
     }
 }
 
@@ -99,6 +104,7 @@ extension AppsGroupCell: UICollectionViewDataSource {
         
         let viewModel = viewModel.getAppRowCellViewModel(at: indexPath)
         cell.viewModel = viewModel
+        cell.configure()
         
         return cell
     }

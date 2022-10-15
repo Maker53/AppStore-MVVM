@@ -36,6 +36,16 @@ class AppsViewController: UICollectionViewController {
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: AppsPageHeader.identifier)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        appsViewModel.fetchPageData {
+            if self.collectionView.numberOfSections != 2 {
+                self.collectionView.reloadData()
+            }
+        }
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -56,6 +66,7 @@ extension AppsViewController {
         
         let viewModel = appsViewModel.getAppsGroupCellViewModel(at: indexPath)
         cell.viewModel = viewModel
+        cell.configure()
         
         return cell
     }
