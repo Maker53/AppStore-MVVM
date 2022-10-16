@@ -74,12 +74,12 @@ class SearchViewController: UIViewController {
     
     private func isShowLoading(_ bool: Bool) {
         if bool {
-            self.mainView?.activityIndicator.startAnimating()
+            mainView?.activityIndicator.startAnimating()
         } else {
-            self.mainView?.activityIndicator.stopAnimating()
+            mainView?.activityIndicator.stopAnimating()
         }
         
-        self.mainView?.loadingLabel.isHidden = !bool
+        mainView?.loadingLabel.isHidden = !bool
     }
 }
 
