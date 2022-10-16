@@ -9,15 +9,23 @@ import Foundation
 
 class AppsPageHeaderViewModel: IAppsPageHeaderViewModel {
     
-    // MARK: - Private Properties
+    // MARK: - Public Properties
+    
+    var appsPageHeader: Box<[AppPageHeader]>
+    
+    // MARK: - Initializer
+    
+    required init(appsPageHeader: [AppPageHeader]) {
+        self.appsPageHeader = Box(appsPageHeader)
+    }
     
     // MARK: - Public Methods
     
     func numberOfItemsInSection() -> Int {
-        3
+        appsPageHeader.value.count
     }
     
     func getAppHeaderCellViewModel(at indexPath: IndexPath) -> IAppHeaderCellViewModel {
-        AppHeaderCellViewModel()
+        AppHeaderCellViewModel(appPageHeader: appsPageHeader.value[indexPath.row])
     }
 }

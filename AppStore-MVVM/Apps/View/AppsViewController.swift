@@ -12,6 +12,15 @@ class AppsViewController: UICollectionViewController {
     // MARK: - Private Properties
     
     private let appsViewModel: IAppsViewModel
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .medium)
+        
+        spinner.hidesWhenStopped = true
+        
+        spinner.center = view.center
+        
+        return spinner
+    }()
     
     // MARK: - Initializers
     
@@ -30,6 +39,8 @@ class AppsViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addSubviews()
+        
         collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: AppsGroupCell.identifier)
         collectionView.register(
             AppsPageHeader.self,
@@ -41,8 +52,16 @@ class AppsViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         
         appsViewModel.fetchPageData {
-            if self.collectionView.numberOfSections != 2 {
-                self.collectionView.reloadData()
+            self.collectionView.reloadData()
+            self.isShowLoading(false)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            if self.collectionView.numberOfItems(inSection: 0) == 0 {
+                self.isShowLoading(true)
             }
         }
     }
@@ -74,8 +93,9 @@ extension AppsViewController {
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AppsPageHeader.identifier, for: indexPath) as? AppsPageHeader else { return UICollectionReusableView() }
         
-        let viewModel = appsViewModel.getAppsPageHeaderViewModel(at: indexPath)
+        let viewModel = appsViewModel.getAppsPageHeaderViewModel()
         header.viewModel = viewModel
+        header.configure()
         
         return header
     }
@@ -95,5 +115,22 @@ extension AppsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         .init(width: view.frame.width, height: 300)
+    }
+}
+
+// MARK: - Private Methods
+
+extension AppsViewController {
+    
+    private func addSubviews() {
+        view.addSubview(activityIndicator)
+    }
+    
+    private func isShowLoading(_ bool: Bool) {
+        if bool {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }        
     }
 }

@@ -5,9 +5,14 @@
 //  Created by Станислав on 20.09.2022.
 //
 
-import Foundation
+import UIKit
 
 protocol IAppHeaderCellViewModel {
     
+    var appName: String { get }
+    var title: String { get }
     
+    init(appPageHeader: AppPageHeader)
+    
+    func getAppPageHeaderImage(completion: @escaping (UIImage?) -> Void)
 }

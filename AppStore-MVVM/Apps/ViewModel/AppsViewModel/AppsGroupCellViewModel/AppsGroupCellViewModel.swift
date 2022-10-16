@@ -19,7 +19,7 @@ class AppsGroupCellViewModel: IAppsGroupCellViewModel {
     
     private let requestManager: IRequestManager = RequestManager()
     private let configFactory = ConfigFactory()
-    private var appGroup: AppGroup
+    private let appGroup: AppGroup
     
     // MARK: - Initializer
     

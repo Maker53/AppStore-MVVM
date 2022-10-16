@@ -22,4 +22,8 @@ struct ConfigFactory {
     func top25PaidAppsConfig() -> RequestConfig<AppsParser> {
         .init(request: AppsRequest.getTop25PaidApps, parser: AppsParser())
     }
+    
+    func appsPageHeaderConfig() -> RequestConfig<AppsPageHeaderParser> {
+        .init(request: AppsPageHeaderRequest.getAppsPageHeader, parser: AppsPageHeaderParser())
+    }
 }

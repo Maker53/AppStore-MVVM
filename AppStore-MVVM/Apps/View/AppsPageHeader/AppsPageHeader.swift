@@ -44,6 +44,14 @@ class AppsPageHeader: UICollectionReusableView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Public Methods
+    
+    func configure() {
+        viewModel.appsPageHeader.bind { [weak self] _ in
+            self?.collectionView.reloadData()
+        }
+    }
 }
 
 // MARK: - Private Methods
@@ -82,6 +90,7 @@ extension AppsPageHeader: UICollectionViewDataSource {
         
         let viewModel = viewModel.getAppHeaderCellViewModel(at: indexPath)
         cell.viewModel = viewModel
+        cell.configure()
         
         return cell
     }

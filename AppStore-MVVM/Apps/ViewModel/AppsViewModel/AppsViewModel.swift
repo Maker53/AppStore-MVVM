@@ -12,6 +12,7 @@ class AppsViewModel: IAppsViewModel {
     // MARK: - Private Properties
     
     private var appGroups = [AppGroup]()
+    private var appsPageHeader = [AppPageHeader]()
     private let requestManager: IRequestManager
     private let configFactory = ConfigFactory()
     
@@ -29,6 +30,12 @@ class AppsViewModel: IAppsViewModel {
         }
         
         let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        fetchAppsPageHeader(config: configFactory.appsPageHeaderConfig()) { appsPageHeader in
+            self.appsPageHeader = appsPageHeader
+            dispatchGroup.leave()
+        }
         
         dispatchGroup.enter()
         fetchAppGroup(config: configFactory.top25FreeAppsConfig()) { appGroup in
@@ -49,8 +56,8 @@ class AppsViewModel: IAppsViewModel {
         appGroups.count
     }
     
-    func getAppsPageHeaderViewModel(at indexPath: IndexPath) -> IAppsPageHeaderViewModel {
-        AppsPageHeaderViewModel()
+    func getAppsPageHeaderViewModel() -> IAppsPageHeaderViewModel {
+        AppsPageHeaderViewModel(appsPageHeader: appsPageHeader)
     }
     
     func getAppsGroupCellViewModel(at indexPath: IndexPath) -> IAppsGroupCellViewModel {
@@ -69,6 +76,19 @@ extension AppsViewModel {
                 completion(data)
                 return
             case .failure(let error):
+                print(error)
+                return
+            }
+        }
+    }
+    
+    private func fetchAppsPageHeader(config: RequestConfig<AppsPageHeaderParser>, completion: @escaping([AppPageHeader]) -> Void) {
+        requestManager.perform(config) { result in
+            switch result {
+            case .success(let data):
+                completion(data)
+                return
+            case.failure(let error):
                 print(error)
                 return
             }

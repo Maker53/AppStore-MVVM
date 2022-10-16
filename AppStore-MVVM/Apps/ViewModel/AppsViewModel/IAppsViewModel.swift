@@ -11,6 +11,6 @@ protocol IAppsViewModel {
     
     func fetchPageData(completion: @escaping () -> Void)
     func numberOfItemsInSection() -> Int
-    func getAppsPageHeaderViewModel(at indexPath: IndexPath) -> IAppsPageHeaderViewModel
+    func getAppsPageHeaderViewModel() -> IAppsPageHeaderViewModel
     func getAppsGroupCellViewModel(at indexPath: IndexPath) -> IAppsGroupCellViewModel
 }

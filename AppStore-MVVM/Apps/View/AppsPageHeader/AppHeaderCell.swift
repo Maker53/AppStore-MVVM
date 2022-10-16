@@ -75,6 +75,19 @@ class AppHeaderCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Public Methods
+    
+    func configure() {
+        appImageView.image = nil
+        
+        viewModel.getAppPageHeaderImage { [unowned(unsafe) self] image in
+            appImageView.image = image
+        }
+        
+        appNameLabel.text = viewModel.appName
+        titleLabel.text = viewModel.title
+    }
 }
 
 // MARK: - Private Methods
