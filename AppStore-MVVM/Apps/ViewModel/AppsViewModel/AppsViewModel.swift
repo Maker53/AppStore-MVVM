@@ -31,10 +31,16 @@ class AppsViewModel: IAppsViewModel {
         let dispatchGroup = DispatchGroup()
         
         dispatchGroup.enter()
-        fetchAppGroup(config: configFactory.top25FreeAppsConfig()) { dispatchGroup.leave() }
+        fetchAppGroup(config: configFactory.top25FreeAppsConfig()) { appGroup in
+            self.appGroups.insert(appGroup, at: 0)
+            dispatchGroup.leave()
+        }
         
         dispatchGroup.enter()
-        fetchAppGroup(config: configFactory.top25PaidAppsConfig()) { dispatchGroup.leave() }
+        fetchAppGroup(config: configFactory.top25PaidAppsConfig()) { appGroup in
+            self.appGroups.append(appGroup)
+            dispatchGroup.leave()
+        }
         
         dispatchGroup.notify(queue: .main) { completion() }
     }
@@ -56,12 +62,11 @@ class AppsViewModel: IAppsViewModel {
 
 extension AppsViewModel {
     
-    private func fetchAppGroup(config: RequestConfig<AppsParser>, completion: @escaping() -> Void) {
+    private func fetchAppGroup(config: RequestConfig<AppsParser>, completion: @escaping(AppGroup) -> Void) {
         requestManager.perform(config) { result in
             switch result {
             case .success(let data):
-                self.appGroups.append(data)
-                completion()
+                completion(data)
                 return
             case .failure(let error):
                 print(error)
