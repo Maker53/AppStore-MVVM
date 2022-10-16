@@ -22,10 +22,11 @@ class AppsCoordinator: Coordinator {
     private let flowTitle = "Apps"
     private let tabBarImageName = "square.stack.3d.up.fill"
     
-    private lazy var appsViewController: UIViewController = {
-        let viewController = UIViewController()
+    private lazy var appsViewController: AppsViewController = {
+        let appsViewModel = AppsViewModel()
+        let viewController = AppsViewController(viewModel: appsViewModel)
         
-        viewController.view.backgroundColor = .systemGroupedBackground
+        viewController.collectionView.backgroundColor = .systemGroupedBackground
         viewController.title = flowTitle
         
         return viewController

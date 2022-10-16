@@ -7,6 +7,8 @@
 
 enum APIConstants {
     
-    static let host = "itunes.apple.com"
+    static let iTunesHost = "itunes.apple.com"
+    static let rssAppStore = "rss.applemarketingtools.com"
+    static let appPageHeaderHost = "api.letsbuildthatapp.com"
     static let requiredQueryItems = ["country": "ru", "entity": "software"]
 }

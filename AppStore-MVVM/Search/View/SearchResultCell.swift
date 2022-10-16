@@ -89,16 +89,7 @@ class SearchResultCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var getAppButton: UIButton = {
-        let button = UIButton(type: .system)
-        
-        button.setTitle("GET", for: .normal)
-        button.titleLabel?.font = .boldSystemFont(ofSize: 14)
-        button.backgroundColor = .systemGray5
-        button.layer.cornerRadius = 16
-        
-        return button
-    }()
+    private lazy var getAppButton = UIButton.createGetButton()
     
     lazy var screenshotImageViews: [UIImageView] = {
         let firstScreenshotImageView = createScreenshotImageView()
