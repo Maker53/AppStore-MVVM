@@ -13,10 +13,6 @@ class MainCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     
     func start() {
-        let todayCoordinator = TodayCoordinator()
-        todayCoordinator.start()
-        childCoordinators.append(todayCoordinator)
-        
         let appsCoordinator = AppsCoordinator()
         appsCoordinator.start()
         childCoordinators.append(appsCoordinator)
@@ -26,7 +22,6 @@ class MainCoordinator: Coordinator {
         childCoordinators.append(searchCoordinator)
         
         rootViewController.viewControllers = [
-            todayCoordinator.rootViewController,
             appsCoordinator.rootViewController,
             searchCoordinator.rootViewController
         ]
